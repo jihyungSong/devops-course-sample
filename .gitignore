@@ -1,5 +1,5 @@
 # Local .terraform directories
-**/.terraform/*
+course3/terraform/.terraform/*
 
 # .tfstate files
 *.tfstate
