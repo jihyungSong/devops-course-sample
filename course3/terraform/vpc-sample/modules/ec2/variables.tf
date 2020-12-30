@@ -1,7 +1,7 @@
 variable "prefix" {}
 variable "environment" {}
 
-variable "servers" {
+variable "web_servers" {
   type = list(object({
     name              =   string
     ami_id            =   string
@@ -26,5 +26,13 @@ variable "subnet_ids" {
 }
 
 variable "security_group_ids" {
+  type = list(string)
+}
+
+variable "ansible_ami_id" {}
+variable "ansible_instance_type" {}
+variable "ansible_keypair_name" {}
+variable "ansible_subnet_id" {}
+variable "ansible_security_group_ids" {
   type = list(string)
 }

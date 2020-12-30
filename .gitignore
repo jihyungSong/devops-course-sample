@@ -1,5 +1,5 @@
 # Local .terraform directories
-course3/terraform/.terraform/*
+course3/terraform/vpc-sample/.terraform/*
 
 # .tfstate files
 *.tfstate

@@ -26,7 +26,7 @@ variable "private_subnets" {
 
 variable "admin_cidr" {}
 
-variable "servers" {
+variable "web_servers" {
   type = list(object({
     name                  =   string
     ami_id                =   string
@@ -45,3 +45,7 @@ variable "servers" {
     }))
   }))
 }
+
+variable "ansible_ami_id" {}
+variable "ansible_instance_type" {}
+variable "ansible_keypair_name" {}

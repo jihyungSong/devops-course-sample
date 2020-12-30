@@ -19,5 +19,5 @@ output "web_access_sg_id" {
 }
 
 output "ec2_instance_ids" {
-  value = module.ec2.server_ids
+  value = module.ec2.web_server_ids
 }
