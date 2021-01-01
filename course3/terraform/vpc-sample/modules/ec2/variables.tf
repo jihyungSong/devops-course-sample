@@ -1,5 +1,6 @@
 variable "prefix" {}
 variable "environment" {}
+variable "region" {}
 
 variable "web_servers" {
   type = list(object({

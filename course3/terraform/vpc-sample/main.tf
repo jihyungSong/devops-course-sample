@@ -36,6 +36,7 @@ module "ec2" {
 
   prefix                      = var.prefix
   environment                 = var.environment
+  region                      = var.region
 
   web_servers                 = var.web_servers
   subnet_ids                  = module.vpc.public_subnet_ids

@@ -1,3 +1,31 @@
+resource "aws_iam_role" "ec2_read_only_role" {
+  name                =   "${var.prefix}-${var.environment}-EC2ReadOnly"
+  assume_role_policy  =   file("${path.module}/policy/ec2_assume_policy.json")
+
+  tags = {
+    Managed_by        =   "terraform"
+  }
+}
+
+resource "aws_iam_role_policy" "ec2_read_only_policy" {
+  name                =   "${var.prefix}-${var.environment}-EC2ReadOnlyPolicy"
+  role                =   aws_iam_role.ec2_read_only_role.id
+  policy              =   file("${path.module}/policy/ec2_read_only_policy.json")
+}
+
+resource "aws_iam_instance_profile" "ec2_read_only_profile" {
+  name                =   "${var.prefix}-${var.environment}-EC2ReadOnly-Profile"
+  role                =   aws_iam_role.ec2_read_only_role.name
+}
+
+data "template_file" "ansible_init" {
+  template            =   file("${path.module}/template/ansible_install.tpl")
+
+  vars = {
+    region            =   var.region
+  }
+}
+
 resource "aws_instance" "ansible" {
   associate_public_ip_address   =   true
   ami                           =   var.ansible_ami_id
@@ -5,6 +33,8 @@ resource "aws_instance" "ansible" {
   instance_type                 =   var.ansible_instance_type
   key_name                      =   var.ansible_keypair_name
   vpc_security_group_ids        =   var.ansible_security_group_ids
+  iam_instance_profile          =   aws_iam_instance_profile.ec2_read_only_profile.name
+  user_data                     =   data.template_file.ansible_init.rendered
 
   tags = {
     Name        =   "${var.prefix}-${var.environment}-ansible"

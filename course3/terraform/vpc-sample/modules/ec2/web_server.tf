@@ -29,5 +29,6 @@ resource "aws_instance" "web_server" {
   tags = {
     Name        =   "${var.prefix}-${var.environment}-${lookup(var.web_servers[count.index], "name")}"
     Managed_by  =   "terraform"
+    server_type =   "web"
   }
 }
