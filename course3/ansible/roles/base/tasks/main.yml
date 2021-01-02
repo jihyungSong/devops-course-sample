@@ -1,9 +1,9 @@
 ---
 - name: install updates
-  yum: update_cache=yes
+  dnf: update_cache=yes
 
-- name: install Yum Packages
-  yum:
+- name: install dnf Packages
+  dnf:
     name:
       - python3
       - git
