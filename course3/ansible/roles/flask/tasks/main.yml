@@ -16,13 +16,17 @@
     src: /root/devops-course-sample/flask/src/
     dest: /opt/flask
 
-- name: Execute Setup
-  pip:
-    name: .
-    executable: /usr/bin/pip3
-    chdir: /opt/flask
+- name: Create Gunicorn config file from template
+  template:
+    src: gunicorn.cfg.template
+    dest: /etc/gunicorn.cfg
+    owner: root
+    group: root
+    mode: 0644
 
 - name: Run Gunicorn with flask
   gunicorn:
     app: 'wsgi:app'
     chdir: /opt/flask
+    config: /etc/gunicorn.cfg
+

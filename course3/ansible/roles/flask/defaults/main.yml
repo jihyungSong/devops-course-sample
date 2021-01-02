@@ -1,0 +1,13 @@
+---
+bind_addr: '0.0.0.0'
+gunicorn_port: '5000'
+backlog: 2048
+worker: 1
+worker_class: 'sync'
+worker_connections: 1000
+timeout: 30
+keepalive: 2
+daemon_enabled: True
+error_log: '-'
+log_level: 'info'
+access_log: '-'

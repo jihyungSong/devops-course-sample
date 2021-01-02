@@ -1,0 +1,16 @@
+bind = '{{ bind_addr }}:{{ gunicorn_port }}'
+backlog = {{ backlog }}
+
+workers = {{ worker }}
+worker_class = '{{ worker_class }}'
+worker_connections = {{ worker_connections }}
+timeout = {{ timeout }}
+keepalive = {{ keepalive }}
+
+daemon = {{ daemon_enabled }}
+
+errorlog = {{ error_log }}
+loglevel = {{ log_level }}
+accesslog = {{ access_log }}
+access_log_format = '%(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"'
+
