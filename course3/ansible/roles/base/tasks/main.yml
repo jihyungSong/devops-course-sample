@@ -2,7 +2,10 @@
 - name: install updates
   yum: update_cache=yes
 
-- name: install Python 3.7
+- name: install Yum Packages
   yum:
-    name: python3
-    state: latest
+    name:
+      - python3
+      - git
+
+
