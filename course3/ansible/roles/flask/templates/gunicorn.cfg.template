@@ -8,6 +8,7 @@ timeout = {{ gunicorn_timeout }}
 keepalive = {{ keepalive }}
 
 daemon = {{ daemon_enabled }}
+pidfile = '{{ pidfile }}'
 
 errorlog = '{{ error_log }}''
 loglevel = '{{ log_level }}

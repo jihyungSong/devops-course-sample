@@ -8,6 +8,7 @@ worker_connections: 1000
 gunicorn_timeout: 30
 keepalive: 2
 daemon_enabled: True
+pidfile: '/proc/gunicorn'
 error_log: '/var/log/error-gunicorn.log'
 log_level: 'info'
 access_log: '/var/log/access-gunicorn.log'
