@@ -28,5 +28,5 @@
   gunicorn:
     app: 'wsgi:app'
     chdir: /opt/flask
-    conf: /etc/gunicorn.cfg
+    config: /etc/gunicorn.cfg
 
