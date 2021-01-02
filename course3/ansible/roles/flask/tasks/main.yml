@@ -9,9 +9,9 @@
 - name: Clone a repo from git
   git:
     repo: https://github.com/jihyungSong/devops-course-sample.git
-    dest: /tmp/devops-course-sample
+    dest: /root/devops-course-sample
 
 - name: Copy flask source for execute
   copy:
-    src: /tmp/devops-course-sample/flask
+    src: /root/devops-course-sample/flask
     dest: /opt/
