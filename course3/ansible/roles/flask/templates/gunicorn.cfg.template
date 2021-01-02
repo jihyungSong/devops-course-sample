@@ -4,7 +4,7 @@ backlog = {{ backlog }}
 workers = {{ worker }}
 worker_class = '{{ worker_class }}'
 worker_connections = {{ worker_connections }}
-timeout = {{ timeout }}
+timeout = {{ gunicorn_timeout }}
 keepalive = {{ keepalive }}
 
 daemon = {{ daemon_enabled }}
