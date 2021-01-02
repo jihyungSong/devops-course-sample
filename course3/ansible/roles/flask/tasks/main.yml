@@ -22,12 +22,7 @@
     executable: /usr/bin/pip3
     chdir: /opt/flask
 
-- name: Remote git source
-  file:
-    path: /root/devops-course-sample
-    state: absent
-
 - name: Run Gunicorn with flask
   gunicorn:
     app: 'app'
-    chdir: '/opt/flask'
+
