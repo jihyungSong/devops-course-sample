@@ -8,7 +8,7 @@ setup(
     name='devops_sample_application',
     version=VERSION,
     description='Flask Sample Server',
-    url='https://github.com/jihyungSong/devops-course-sample/flask',
+    url='https://github.com/jihyungSong/devops-course-sample/tree/master/flask',
     long_description='',
     author='JH Song',
     author_email='bluese05@gmail.com',
