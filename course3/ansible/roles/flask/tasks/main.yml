@@ -1,0 +1,16 @@
+---
+- name: Install pip packages.
+  pip:
+    name:
+      - flask
+      - gunicorn
+
+- name: Clone a repo from git
+  git:
+    repo: https://github.com/jihyungSong/devops-course-sample.git
+    dest: /tmp
+
+- name: Copy flask source for execute
+  copy:
+    src: /tmp/devops-course-sample/flask
+    dest: /opt

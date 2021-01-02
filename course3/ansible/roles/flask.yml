@@ -1,0 +1,7 @@
+---
+- name: Build flask server
+  hosts: tag_server_type_web
+
+  roles:
+    - base
+    - flask
