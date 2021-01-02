@@ -15,3 +15,14 @@
   copy:
     src: /root/devops-course-sample/flask/src/
     dest: /opt/flask
+
+- name: Execute Setup
+  pip:
+    name: .
+    executable: /usr/bin/pip3
+    chdir: /opt/flask
+
+- name: Remote git source
+  file:
+    path: /root/devops-course-sample
+    state: absent
