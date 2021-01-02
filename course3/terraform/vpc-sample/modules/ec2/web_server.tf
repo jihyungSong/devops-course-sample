@@ -7,6 +7,7 @@ resource "aws_instance" "web_server" {
   instance_type                 =   lookup(var.web_servers[count.index], "instance_type")
   key_name                      =   lookup(var.web_servers[count.index], "keypair_name")
   vpc_security_group_ids        =   var.security_group_ids
+  user_data                     =   file("${path.module}/template/web_server.tpl")
 
   root_block_device {
     volume_type = lookup(var.web_servers[count.index].root_device, "volume_type")

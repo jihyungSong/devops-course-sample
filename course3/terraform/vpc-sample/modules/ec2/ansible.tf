@@ -19,10 +19,11 @@ resource "aws_iam_instance_profile" "ec2_read_only_profile" {
 }
 
 data "template_file" "ansible_init" {
-  template            =   file("${path.module}/template/ansible_install.tpl")
+  template                =   file("${path.module}/template/ansible_install.tpl")
 
   vars = {
-    region            =   var.region
+    region                =   var.region
+    web_server_ssh_pem    =   file("${path.module}/ssh_pem/web_server.pem")
   }
 }
 

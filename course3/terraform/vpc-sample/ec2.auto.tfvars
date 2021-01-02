@@ -52,6 +52,6 @@ web_servers = [
   }
 ]
 
-ansible_ami_id = "ami-0be2609ba883822ec"
-ansible_instance_type = "t2.micro"
-ansible_keypair_name = "jihyungsong-new-key"
+ansible_ami_id          = "ami-0be2609ba883822ec"
+ansible_instance_type   = "t2.micro"
+ansible_keypair_name    = "jihyungsong-new-key"
