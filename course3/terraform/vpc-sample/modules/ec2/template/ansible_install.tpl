@@ -19,7 +19,6 @@ EOF
 sudo cat > /opt/ansible/inventory/group_vars/tag_server_type_web << EOF
 ansible_ssh_user: ec2-user
 ansible_ssh_private_key_file: /root/key/web_server.pem
-ansible_python_interpreter: /usr/bin/python3
 EOF
 
 sudo mkdir -p /etc/ansible
@@ -27,6 +26,7 @@ sudo cat > /etc/ansible/ansible.cfg << EOF
 [defaults]
 inventory = /opt/ansible/inventory/aws_ec2.yaml
 host_key_checking = False
+interpreter_python = /usr/bin/python
 
 [privilege_escalation]
 become = true
