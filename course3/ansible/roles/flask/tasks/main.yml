@@ -4,7 +4,7 @@
     name:
       - flask
       - gunicorn
-  executable: /usr/bin/pip3
+    executable: /usr/bin/pip3
 
 - name: Clone a repo from git
   git:
