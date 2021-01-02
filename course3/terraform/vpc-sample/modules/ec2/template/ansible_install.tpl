@@ -1,6 +1,6 @@
 #! /bin/bash
 sudo yum update
-sudo yum install -y python3
+sudo yum install -y python3 git
 sudo pip3 install ansible
 sudo pip3 install boto3
 sudo mkdir -p /opt/ansible/inventory
