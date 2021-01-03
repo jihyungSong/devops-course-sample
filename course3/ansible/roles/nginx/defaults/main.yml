@@ -1,0 +1,3 @@
+---
+web_server_port: '80'
+gunicorn_port: '5000'

@@ -1,0 +1,6 @@
+server{
+  listen {{ web_server_port }};
+    location / {
+      proxy_pass http://localhost:{{ gunicorn_port }};
+    }
+}
