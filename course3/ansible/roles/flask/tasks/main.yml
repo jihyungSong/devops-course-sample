@@ -16,26 +16,36 @@
     src: /root/devops-course-sample/flask/src/
     dest: /opt/flask
 
+- name: Create gunicorn user
+  user:
+    name: gunicorn
+    state: present
+
 - name: Create Gunicorn config file from template
   template:
     src: gunicorn.cfg.py.template
     dest: /etc/gunicorn.cfg.py
-    owner: root
-    group: root
-    mode: 0644
   notify:
     - restart gunicorn
 
-- name: Install systemd service configuration
+- name: Configure systemd service
   template:
     src: systemd.conf.template
-    dest: /etc/systemd/system/gunicorn.service.d
-    mode: 0755
+    dest: /etc/systemd/system/gunicorn.service
   notify:
     - restart gunicorn
   when: ansible_service_mgr == "systemd"
 
+- name: Configure gunicorn socket
+  template:
+    src: gunicorn.socket.template
+    dest: /etc/systemd/system/gunicorn.socket
+  notify:
+    - restart gunicorn
+  when: ansible_service_mgr == "systemd"
+
+
 - name: Enable gunicorn service
   service:
-    name: gunicorn
+    name: gunicorn.socket
     enabled: yes

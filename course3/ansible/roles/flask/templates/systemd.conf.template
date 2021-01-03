@@ -1,8 +1,12 @@
 [Unit]
 Description = gunicorn
+Requires=gunicorn.socket
 After = network.target
 
 [Service]
+Type = notify
+User = gunicorn
+Group = gunicorn
 PermissionsStartOnly = true
 PIDFile = /run/gunicorn/gunicorn.pid
 User = root
@@ -13,6 +17,9 @@ ExecStart = /usr/local/bin/gunicorn --pid /run/gunicorn/gunicorn.pid --config /e
 ExecReload = /bin/kill -s HUP $MAINPID
 ExecStop = /bin/kill -s TERM $MAINPID
 ExecStopPost = /bin/rm -rf /run/gunicorn
+KillMode = mixed
+TimeoutStopSec = 5
+PrivateTmp = true
 
 [Install]
 WantedBy = multi-user.target
