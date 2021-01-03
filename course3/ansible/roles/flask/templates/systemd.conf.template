@@ -1,0 +1,18 @@
+[Unit]
+Description = gunicorn
+After = network.target
+
+[Service]
+PermissionsStartOnly = true
+PIDFile = /run/gunicorn/gunicorn.pid
+User = root
+Group = root
+WorkingDirectory = /opt/flask
+ExecStartPre = /bin/mkdir /run/gunicorn
+ExecStart = /usr/local/bin/gunicorn --pid /run/gunicorn/gunicorn.pid --config /etc/gunicorn.cfg.py wsgi:app
+ExecReload = /bin/kill -s HUP $MAINPID
+ExecStop = /bin/kill -s TERM $MAINPID
+ExecStopPost = /bin/rm -rf /run/gunicorn
+
+[Install]
+WantedBy = multi-user.target
