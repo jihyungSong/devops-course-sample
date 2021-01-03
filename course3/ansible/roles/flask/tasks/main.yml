@@ -18,8 +18,8 @@
 
 - name: Create Gunicorn config file from template
   template:
-    src: gunicorn.cfg.template
-    dest: /etc/gunicorn.cfg
+    src: gunicorn.cfg.py.template
+    dest: /etc/gunicorn.cfg.py
     owner: root
     group: root
     mode: 0644
@@ -28,5 +28,5 @@
   gunicorn:
     app: 'wsgi:app'
     chdir: /opt/flask
-    config: /etc/gunicorn.cfg
+    config: /etc/gunicorn.cfg.py
 
