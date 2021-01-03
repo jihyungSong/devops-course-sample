@@ -1,8 +1,7 @@
 ---
-bind_addr: '0.0.0.0'
+bind_addr: '127.0.0.1'
 gunicorn_port: '5000'
 backlog: 2048
-worker: 1
 worker_class: 'sync'
 worker_connections: 1000
 gunicorn_timeout: 30

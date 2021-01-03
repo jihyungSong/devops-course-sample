@@ -1,7 +1,9 @@
+import multiprocessing
+
 bind = '{{ bind_addr }}:{{ gunicorn_port }}'
 backlog = {{ backlog }}
 
-workers = {{ worker }}
+workers = multiprocessing.cpu_count() * 2 + 1
 worker_class = '{{ worker_class }}'
 worker_connections = {{ worker_connections }}
 timeout = {{ gunicorn_timeout }}
