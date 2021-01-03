@@ -35,7 +35,7 @@
   notify:
     - reload daemon
     - restart gunicorn
-  when: ansible_service_mgr == "systemd
+  when: ansible_service_mgr == "systemd"
 
 - name: Enable gunicorn service
   service:
