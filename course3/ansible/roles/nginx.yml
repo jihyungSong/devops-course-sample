@@ -1,6 +1,0 @@
----
-- name: Build WEB server
-  hosts: tag_server_type_web
-  roles:
-    - base
-    - nginx

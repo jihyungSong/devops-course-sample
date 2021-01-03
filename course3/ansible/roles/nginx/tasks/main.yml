@@ -2,3 +2,15 @@
 - command: amazon-linux-extras install nginx1 -y
   args:
     creates: /usr/sbin/nginx
+
+- name: Create flask config file from template
+  template:
+    src: flask.conf.template
+    dest: /etc/nginx/conf.d/flask.conf
+  notify:
+    - restart nginx
+
+- name: Enable nginx service
+  service:
+    name: nginx
+    enabled: yes
