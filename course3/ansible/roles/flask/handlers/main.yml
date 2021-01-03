@@ -3,3 +3,8 @@
   service:
     name: gunicorn
     state: restarted
+
+- name: reload daemon
+  systemd:
+    daemon_reload: yes
+

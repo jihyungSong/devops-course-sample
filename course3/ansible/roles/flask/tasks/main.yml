@@ -33,18 +33,11 @@
     src: systemd.conf.template
     dest: /etc/systemd/system/gunicorn.service
   notify:
+    - reload daemon
     - restart gunicorn
-  when: ansible_service_mgr == "systemd"
-
-- name: Configure gunicorn socket
-  template:
-    src: gunicorn.socket.template
-    dest: /etc/systemd/system/gunicorn.socket
-  notify:
-    - restart gunicorn
-  when: ansible_service_mgr == "systemd"
+  when: ansible_service_mgr == "systemd
 
 - name: Enable gunicorn service
   service:
-    name: gunicorn.socket
+    name: gunicorn
     enabled: yes
