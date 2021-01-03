@@ -2,8 +2,6 @@
 - name: install updates
   yum: update_cache=yes
 
-- name: install the latest version of Nginx
-  yum:
-    name: nginx
-    state: latest
-
+- command: amazon-linux-extras install nginx1 -y
+  args:
+    creates: /usr/sbin/nginx
