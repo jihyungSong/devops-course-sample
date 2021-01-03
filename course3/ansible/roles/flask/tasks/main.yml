@@ -28,12 +28,6 @@
   notify:
     - restart gunicorn
 
-- name: Create run PID directory if it does not exist
-  file:
-    path: /run/gunicorn
-    state: directory
-    mode: '0755'
-
 - name: Configure systemd service
   template:
     src: systemd.conf.template
