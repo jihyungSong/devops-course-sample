@@ -1,6 +1,6 @@
 ---
-- name: Build flask server
+- name: Build WEB server
   hosts: tag_server_type_web
   roles:
     - base
-    - flask
+    - nginx
