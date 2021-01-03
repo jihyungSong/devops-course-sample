@@ -27,7 +27,7 @@
 
 - name: Install systemd service configuration
   template:
-    src: systemd.conf.j2
+    src: systemd.conf.template
     dest: /etc/systemd/system/gunicorn.service.d
     mode: 0755
   notify: Restart gunicorn
