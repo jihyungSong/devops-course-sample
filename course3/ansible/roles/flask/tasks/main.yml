@@ -23,14 +23,16 @@
     owner: root
     group: root
     mode: 0644
-  notify: Restart Gunicorn
+  notify:
+    - restart gunicorn
 
 - name: Install systemd service configuration
   template:
     src: systemd.conf.template
     dest: /etc/systemd/system/gunicorn.service.d
     mode: 0755
-  notify: Restart gunicorn
+  notify:
+    - restart gunicorn
   when: ansible_service_mgr == "systemd"
 
 - name: Enable gunicorn service
