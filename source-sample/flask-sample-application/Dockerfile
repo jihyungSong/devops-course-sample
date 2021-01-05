@@ -11,8 +11,5 @@ RUN pip install .
 
 EXPOSE ${FLASK_PORT}
 
-#ENTRYPOINT ["flask"]
-#CMD ["run", "--host=0.0.0.0"]
-
 ENTRYPOINT ["gunicorn"]
 CMD ["--bind", "0.0.0.0:5000", "wsgi:app"]
