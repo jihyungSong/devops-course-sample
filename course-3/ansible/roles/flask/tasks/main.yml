@@ -13,7 +13,7 @@
 
 - name: Copy flask source for execute
   copy:
-    src: /root/devops-course-sample/flask/src/
+    src: /root/devops-course-sample/source-sample/flask-sample-application/src/
     dest: /opt/flask
 
 - name: Create gunicorn user
