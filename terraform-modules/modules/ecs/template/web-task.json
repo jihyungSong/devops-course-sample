@@ -1,65 +1,44 @@
-{
-  "requiresCompatibilities": [
-    "FARGATE"
-  ],
-  "containerDefinitions": [
-    {
-      "name": "${ecs_task_nginx_name}",
-      "image": "${ecs_task_nginx_image}",
-      "portMappings": [
-        {
-          "hostPort": 80,
-          "protocol": "tcp",
-          "containerPort": 80
-        }
-      ],
-      "healthCheck": {
-        "command": [
-          "CMD-SHELL",
-          "curl -f http://localhost/ || exit 1"
-        ],
-        "interval": 5,
-        "timeout": 10,
-        "startPeriod": 10,
-        "retries": 3
-      },
-      "logConfiguration": {
-        "logDriver": "awslogs",
-        "options": {
-          "awslogs-group": "/ecs/web",
-          "awslogs-region": "us-east-1",
-          "awslogs-stream-prefix": "ecs"
-        }
+[
+  {
+    "name": "${ecs_task_nginx_name}",
+    "image": "${ecs_task_nginx_image}",
+    "portMappings": [
+      {
+        "hostPort": 80,
+        "protocol": "tcp",
+        "containerPort": 80
       }
-    },
-    {
-      "name": "${ecs_task_flask_name}",
-      "image": "${ecs_task_flask_image}",
-      "portMappings": [
-        {
-          "hostPort": 5000,
-          "protocol": "tcp",
-          "containerPort": 5000
-        }
+    ],
+    "healthCheck": {
+      "command": [
+        "CMD-SHELL",
+        "curl -f http://localhost/ || exit 1"
       ],
-      "healthCheck": {
-        "command": [
-          "CMD-SHELL",
-          "curl -f http://localhost:5000/ || exit 1"
-        ],
-        "interval": 5,
-        "timeout": 10,
-        "startPeriod": 10,
-        "retries": 3
-      },
-      "logConfiguration": {
-        "logDriver": "awslogs",
-        "options": {
-          "awslogs-group": "/ecs/web",
-          "awslogs-region": "us-east-1",
-          "awslogs-stream-prefix": "ecs"
-        }
-      }
+      "interval": 5,
+      "timeout": 10,
+      "startPeriod": 10,
+      "retries": 3
     }
-  ]
-}
+  },
+  {
+    "name": "${ecs_task_flask_name}",
+    "image": "${ecs_task_flask_image}",
+    "portMappings": [
+      {
+        "hostPort": 5000,
+        "protocol": "tcp",
+        "containerPort": 5000
+      }
+    ],
+    "healthCheck": {
+      "command": [
+        "CMD-SHELL",
+        "curl -f http://localhost:5000/ || exit 1"
+      ],
+      "interval": 5,
+      "timeout": 10,
+      "startPeriod": 10,
+      "retries": 3
+    }
+  }
+]
