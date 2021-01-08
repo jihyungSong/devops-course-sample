@@ -23,4 +23,8 @@ module "ecs" {
 
   nginx_container_image               =   var.nginx_container_image
   flask_container_image               =   var.flask_container_image
+
+  ecs_alb_security_groups     = var.ecs_alb_security_groups
+  ecs_alb_subnet_ids          = var.ecs_alb_subnet_ids
+  vpc_id                      = var.vpc_id
 }
