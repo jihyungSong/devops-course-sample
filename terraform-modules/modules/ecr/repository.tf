@@ -8,7 +8,7 @@ resource "aws_ecr_repository" "nginx_ecr_repo" {
 }
 
 resource "aws_ecr_repository" "flask_ecr_repo" {
-  name                 = "${var.prefix}-${var.environment}-nginx"
+  name                 = "${var.prefix}-${var.environment}-flask"
   image_tag_mutability = "MUTABLE"
 
   image_scanning_configuration {
