@@ -9,3 +9,11 @@ output "ecs_web_service_name" {
 output "ecs_web_task_definition_id" {
   value = aws_ecs_task_definition.ecs_web_task.id
 }
+
+output "ecs_alb_arn" {
+  value = aws_lb.ecs_alb.arn
+}
+
+output "ecs_alb_dns_name" {
+  value = aws_lb.ecs_alb.dns_name
+}
