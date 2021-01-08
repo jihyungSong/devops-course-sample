@@ -12,4 +12,4 @@ RUN pip install .
 EXPOSE ${FLASK_PORT}
 
 ENTRYPOINT ["gunicorn"]
-CMD ["--bind", "0.0.0.0:5000", "wsgi:app"]
+CMD ["--bind", "127.0.0.1:5000", "wsgi:app"]
