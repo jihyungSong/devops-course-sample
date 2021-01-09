@@ -8,17 +8,7 @@
         "protocol": "tcp",
         "containerPort": 80
       }
-    ],
-    "healthCheck": {
-      "command": [
-        "CMD-SHELL",
-        "curl -f http://localhost/ || exit 1"
-      ],
-      "interval": 5,
-      "timeout": 10,
-      "startPeriod": 10,
-      "retries": 3
-    }
+    ]
   },
   {
     "name": "${ecs_task_flask_name}",
@@ -29,16 +19,6 @@
         "protocol": "tcp",
         "containerPort": 5000
       }
-    ],
-    "healthCheck": {
-      "command": [
-        "CMD-SHELL",
-        "curl -f http://localhost:5000/ || exit 1"
-      ],
-      "interval": 5,
-      "timeout": 10,
-      "startPeriod": 10,
-      "retries": 3
-    }
+    ]
   }
 ]
