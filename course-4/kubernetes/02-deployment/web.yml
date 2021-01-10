@@ -16,13 +16,15 @@ spec:
         app: web
     spec:
       containers:
-        - name: nginx-gunicorn
-          image: jihyungsong/nginx-gunicorn:0.2
+        - name: nginx
+          image: 574261620507.dkr.ecr.us-east-1.amazonaws.com/jhsong-devops-nginx:0.2
           imagePullPolicy: Always
           ports:
             - containerPort: 80
-        - name: flask-gunicorn
-          image: jihyungsong/gunicorn-flask:0.1
+        - name: flask
+          image: 574261620507.dkr.ecr.us-east-1.amazonaws.com/jhsong-devops-flask:0.2
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
+      imagePullSecrets:
+        - name: regcred
