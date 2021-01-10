@@ -1,12 +1,12 @@
 resource "aws_eks_cluster" "eks_cluster" {
-  name                        = "${var.prefix}-${var.environment}-ecs-cluster"
+  name                        = "${var.prefix}-${var.environment}-eks-cluster"
   version                     = var.eks_cluster_version
   role_arn                    = aws_iam_role.eks_role.arn
 
   vpc_config {
     subnet_ids                =   var.eks_cluster_subnet_ids
     security_group_ids        =   [aws_security_group.eks_cluster_sg.id]
-    endpoint_public_access    =   true
+    endpoint_private_access   =   true
   }
 
   depends_on = [
