@@ -16,5 +16,6 @@ module "codebuild" {
   account_id            =   var.account_id
   region                =   var.region
   code_commit_git_url   =   var.code_commit_git_url
+  code_commit_repo_name =   var.code_commit_repo_name
   image_tag             =   var.image_tag
 }

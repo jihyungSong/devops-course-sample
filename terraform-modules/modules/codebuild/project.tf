@@ -36,6 +36,16 @@ resource "aws_codebuild_project" "codebuild_project" {
       name  = "IMAGE_REPO_NAME"
       value = "${var.prefix}-${var.environment}-flask"
     }
+
+    environment_variable {
+      name  = "DOCKERHUB_USER"
+      value = ""
+    }
+
+    environment_variable {
+      name  = "DOCKERHUB_PASSWORD"
+      value = ""
+    }
   }
 
   artifacts {
