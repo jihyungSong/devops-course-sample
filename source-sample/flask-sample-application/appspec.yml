@@ -1,0 +1,16 @@
+version: 0.0
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: "arn:aws:ecs:us-east-1:257706363616:task-definition/web:4"
+        LoadBalancerInfo:
+          ContainerName: "nginx"
+          ContainerPort: 80
+# Optional properties
+        PlatformVersion: "LATEST"
+        NetworkConfiguration:
+          AwsvpcConfiguration:
+            Subnets: ["subnet-0267fb8d251d2954d","subnet-0d98da99552a905d0", "subnet-0f13187bee148a90d", "subnet-051713773a6e4f00a"]
+            SecurityGroups: ["sg-0cb81c96e1d7e7160"]
+            AssignPublicIp: "DISABLED"
