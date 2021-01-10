@@ -7,3 +7,4 @@
    kubectl version --short --client
 
 3. aws eks update-kubeconfig --region <<region>> --name <<eks_cluster_name>>
+
