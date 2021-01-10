@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: web
+  name: web
+  namespace: devops
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: nginx-gunicorn
+          image: jihyungsong/nginx-gunicorn:0.2
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+        - name: flask-gunicorn
+          image: jihyungsong/gunicorn-flask:0.1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000

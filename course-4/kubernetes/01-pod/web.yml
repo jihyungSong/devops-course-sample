@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web
+  labels:
+    app: web
+  namespace: devops
+spec:
+  containers:
+  - name: nginx-gunicorn
+    image: jihyungsong/nginx-gunicorn:0.2
+    imagePullPolicy: Always
+    ports:
+      - containerPort: 80
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: flask
+  labels:
+    app: web
+  namespace: devops
+spec:
+  containers:
+  - name: flask-gunicorn
+    image: jihyungsong/gunicorn-flask:0.1
+    imagePullPolicy: Always
+    ports:
+      - containerPort: 5000
