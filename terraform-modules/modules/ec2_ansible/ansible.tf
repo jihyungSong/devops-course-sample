@@ -1,5 +1,5 @@
 resource "aws_iam_role" "ec2_read_only_role" {
-  name                =   "${var.prefix}-${var.environment}-EC2ReadOnly"
+  name                =   "${local.tag_prefix}-EC2ReadOnly"
   assume_role_policy  =   file("${path.module}/policy/ec2_assume_policy.json")
 
   tags = {
@@ -8,13 +8,13 @@ resource "aws_iam_role" "ec2_read_only_role" {
 }
 
 resource "aws_iam_role_policy" "ec2_read_only_policy" {
-  name                =   "${var.prefix}-${var.environment}-EC2ReadOnlyPolicy"
+  name                =   "${local.tag_prefix}-EC2ReadOnlyPolicy"
   role                =   aws_iam_role.ec2_read_only_role.id
   policy              =   file("${path.module}/policy/ec2_read_only_policy.json")
 }
 
 resource "aws_iam_instance_profile" "ec2_read_only_profile" {
-  name                =   "${var.prefix}-${var.environment}-EC2ReadOnly-Profile"
+  name                =   "${local.tag_prefix}-EC2ReadOnly-Profile"
   role                =   aws_iam_role.ec2_read_only_role.name
 }
 
@@ -38,7 +38,7 @@ resource "aws_instance" "ansible" {
   user_data                     =   data.template_file.ansible_init.rendered
 
   tags = {
-    Name        =   "${var.prefix}-${var.environment}-ansible"
+    Name        =   "${local.tag_prefix}-ansible"
     Managed_by  =   "terraform"
   }
 }

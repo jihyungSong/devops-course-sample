@@ -6,7 +6,7 @@ resource "aws_subnet" "public_subnet" {
   availability_zone   =   lookup(var.public_subnets[count.index], "availability_zone")
 
   tags = {
-    Name              =   "${var.prefix}-${var.environment}-${lookup(var.public_subnets[count.index], "name")}"
+    Name              =   "${local.tag_prefix}-${lookup(var.public_subnets[count.index], "name")}"
     Managed_by        =   "terraform"
   }
 
@@ -21,7 +21,7 @@ resource "aws_subnet" "private_subnet" {
   availability_zone   =   lookup(var.private_subnets[count.index], "availability_zone")
 
   tags = {
-    Name              =   "${var.prefix}-${var.environment}-${lookup(var.private_subnets[count.index], "name")}"
+    Name              =   "${local.tag_prefix}-${lookup(var.private_subnets[count.index], "name")}"
     Managed_by        =   "terraform"
   }
 

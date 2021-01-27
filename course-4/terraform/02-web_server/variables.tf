@@ -8,9 +8,6 @@ variable "web_server_keypair_name" {}
 variable "web_server_subnet_ids" {
   type = list(string)
 }
-variable "web_server_security_group_ids" {
-  type = list(string)
-}
 
 variable "web_servers" {
   type = list(object({
@@ -29,3 +26,9 @@ variable "web_servers" {
   }))
 }
 
+variable "vpc_id" {}
+variable "alb_subnet_ids" {
+    type    =   list(string)
+}
+
+variable "admin_security_group_id" {}

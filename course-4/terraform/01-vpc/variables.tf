@@ -24,4 +24,5 @@ variable "private_subnets" {
     }))
 }
 
+// Security Group
 variable "admin_cidr" {}

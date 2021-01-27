@@ -26,4 +26,7 @@ output "private_route_table_id" {
   value = aws_route_table.private_route_table.id
 }
 
+output "admin_access_sg_id" {
+  value = aws_security_group.admin_access_sg.id
+}
 

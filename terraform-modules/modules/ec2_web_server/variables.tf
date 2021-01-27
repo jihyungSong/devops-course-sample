@@ -1,6 +1,7 @@
 variable "prefix" {}
 variable "environment" {}
 variable "region" {}
+variable "vpc_id" {}
 
 variable "web_server_ami_id" {}
 variable "web_server_instance_type" {}
@@ -27,6 +28,4 @@ variable "web_server_subnet_ids" {
   type = list(string)
 }
 
-variable "web_server_security_group_ids" {
-  type = list(string)
-}
+variable "web_server_admin_access_security_group_id" {}

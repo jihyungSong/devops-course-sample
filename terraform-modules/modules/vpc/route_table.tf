@@ -3,7 +3,7 @@ resource "aws_route_table" "public_route_table" {
   vpc_id        =   aws_vpc.main.id
 
   tags = {
-    Name        =   "${var.prefix}-${var.environment}-public-rt"
+    Name        =   "${local.tag_prefix}-public-rt"
     Managed_by  =   "terraform"
   }
 }
@@ -30,7 +30,7 @@ resource "aws_route_table" "private_route_table" {
   vpc_id        =   aws_vpc.main.id
 
   tags = {
-    Name        =   "${var.prefix}-${var.environment}-private-rt"
+    Name        =   "${local.tag_prefix}-private-rt"
     Managed_by  =   "terraform"
   }
 }

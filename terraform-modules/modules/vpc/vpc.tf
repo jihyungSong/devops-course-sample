@@ -3,7 +3,7 @@ resource "aws_vpc" "main" {
   enable_dns_hostnames    =   true
 
   tags = {
-    Name        =   "${var.prefix}-${var.environment}-vpc"
+    Name        =   "${local.tag_prefix}-vpc"
     Managed_by  =   "terraform"
   }
 }

@@ -40,3 +40,5 @@ sudo cat > /root/key/web_server.pem << EOF
 ${web_server_ssh_pem}
 EOF
 sudo chmod 0400 /root/key/web_server.pem
+
+sudo git clone https://github.com/jihyungSong/devops-course-sample.git /root/devops-course-sample

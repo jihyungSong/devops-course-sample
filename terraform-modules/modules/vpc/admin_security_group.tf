@@ -1,7 +1,6 @@
-# SG for MongoDB Bastion Access
 resource "aws_security_group" "admin_access_sg" {
-  name          =   "${var.prefix}-${var.environment}-admin-access-sg"
-  vpc_id        =   var.vpc_id
+  name          =   "${local.tag_prefix}-admin-access-sg"
+  vpc_id        =   aws_vpc.main.id
 
   # Outbound ALL
   egress {
@@ -12,7 +11,7 @@ resource "aws_security_group" "admin_access_sg" {
   }
 
   tags = {
-    Name        =   "${var.prefix}-${var.environment}-admin-access-sg"
+    Name        =   "${local.tag_prefix}-admin-access-sg"
     Managed_by  =   "terraform"
   }
 }
@@ -25,4 +24,14 @@ resource "aws_security_group_rule" "admin_access_rule_ssh" {
   to_port             = 22
   protocol            = "tcp"
   security_group_id   = aws_security_group.admin_access_sg.id
+}
+
+resource "aws_security_group_rule" "access_rule_self" {
+  type                      =   "ingress"
+  description               =   "Allow Traffic by self"
+  source_security_group_id  =   aws_security_group.admin_access_sg.id
+  from_port                 =   0
+  to_port                   =   65535
+  protocol                  =   "all"
+  security_group_id         =   aws_security_group.admin_access_sg.id
 }

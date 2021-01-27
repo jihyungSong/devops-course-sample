@@ -22,3 +22,5 @@ variable "private_subnets" {
       availability_zone   =   string
     }))
 }
+
+variable "admin_cidr" {}
